@@ -1,0 +1,75 @@
+print("____________________________________________________________")
+print("  ")
+def validar_datos():
+  
+  num= '0123456789'
+
+  estrato = int(input('Ingrese su estrato: '))
+  print("____________________________________________________________")
+  print("    ")
+  edad = int(input('Ingrese su edad: '))
+  print("____________________________________________________________")
+  print("    ")
+  cdia = input('Ingrese su CDIA: ')
+  print("____________________________________________________________")
+  print("    ")
+
+  cdia = cdia.upper()
+  
+  if estrato < 1 or estrato > 5:
+    print('Estrato inválido, debe ser un valor entero entre 1 y 5')
+  elif edad < 1 or edad > 150:
+    print ('Edad inválida')
+    print("    ")
+  else:
+    
+    if len(cdia) < 10 or len(cdia) > 10:
+      print('CDIA inválido, este debe tener 10 caracteres')
+      return
+    
+    for i in cdia:
+      if i in num:
+        print('CDIA inválido, este no debe contener caracteres numéricos')
+        return
+
+    if cdia.find('@', 5) != 5:
+      print('CDIA inválido, falta el caracter "@"')
+      return
+    
+    if cdia[0] == cdia[-1]:
+      print('CDIA inválido, el primer y último caracter deben ser diferentes')
+      return
+      
+    if cdia.count ("-") < 1:
+      print('CDIA inválido, hace falta el caracter "-"') 
+      return
+      
+    if cdia.count ("K") > 3:
+      print('CDIA inválido, debe contener menos de 4 "k"')
+      return
+
+    if cdia.count ("?") == 0 | cdia.count ("=") == 0 | cdia.count (",") == 0:
+      print('CDIA inválido, debe contener al menos uno de los sigientes caracteres: "?", "=", ","')
+      return
+      
+    print('CDIA válido')
+    print("____________________________________________________________")
+    print("    ")
+
+    if 12 <= edad <= 20 and 1 <= estrato <= 2:
+      print('Ha sido asignado al ESCALAFÓN 1')
+    elif 21 <= edad <= 40 and 1 <= estrato <= 2:
+      print('Ha sido asignado al ESCALAFÓN 2')
+    elif edad > 40 and 1 <= estrato <= 2:
+      print('Ha sido asignado al ESCALAFÓN 3')
+    elif 12 <= edad <= 20 and 3 <= estrato <= 4:
+      print('Ha sido asignado al ESCALAFÓN 4')
+    elif 21 <= edad <= 40 and 3 <= estrato <= 4:
+      print('Ha sido asignado al ESCALAFÓN 5')
+    elif edad > 40 and 3 <= estrato <= 4:
+      print('Ha sido asignado al ESCALAFÓN 6')
+    else:
+      print('Para asignar un escalafón, el usuario debe tener más de 12 años y ser estrato 1, 2, 3 ó 4')
+      
+   
+validar_datos()
